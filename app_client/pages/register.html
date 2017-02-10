@@ -1,0 +1,21 @@
+<div class="container" ng-controller="registerController as reg">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1 class="text-center">Register</h1>
+			<form ng-submit="reg.register(reg.regData)" class="form">
+				<div class="form-group">
+					<input type="text" ng-model="reg.regData.name" class="form-control" placeholder="Firstname & Lastname">
+				</div>
+				<div class="form-group">
+					<input type="email" ng-model="reg.regData.email" class="form-control" placeholder="Email">
+				</div>
+				<div class="form-group">
+					<input type="password" ng-model="reg.regData.password" class="form-control" placeholder="Password">
+				</div>
+				<button class="btn btn-success">Log-in</button>
+			</form>
+
+			<div class="alert alert-danger" ng-show="reg.alertMsg">{{ register.alertMsg }}</div>
+		</div>
+	</div>
+</div>
