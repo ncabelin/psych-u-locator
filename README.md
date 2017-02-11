@@ -1,5 +1,7 @@
 # Psych Unit Locator
 
+An application that checks for the nearest psych unit in Los Angeles and show you pertinent info. This app is used by the San Fernando Valley Community Mental Health Center. It can access the current location and show the 
+
 ## Dependencies
 
 1. express
@@ -10,6 +12,7 @@
 6. body-parser
 7. passport
 8. passport-local
+9. express-jwt
 
 ## Route Structure
 1. Main page - public
