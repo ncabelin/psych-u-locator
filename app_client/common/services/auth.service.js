@@ -45,14 +45,18 @@
 		var register = function(user) {
 			return $http.post('/api/register', user).then(function(result) {
 				saveToken(result.data.token);
+				console.log('sent registry data');
+			}, function(err) {
+				console.log(err);
 			});
 		};
 
 		var login = function(user) {
 			return $http.post('/api/login', user).then(function(result) {
+				console.log('logged in');
 				saveToken(result.data.token);
 			}, function(err) {
-				alert(err);
+				console.log(err);
 			});
 		};
 

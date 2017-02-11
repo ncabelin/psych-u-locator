@@ -10,7 +10,8 @@
     vm.credentials = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      code: ''
     };
 
     vm.onSubmit = function() {
@@ -19,9 +20,6 @@
         vm.alertMsg = false;
         auth
           .register(vm.credentials)
-          .error(function(err) {
-            alert(err);
-          })
           .then(function() {
             $location.path('admin');
           });

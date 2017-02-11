@@ -13,7 +13,10 @@
 				<div class="form-group">
 					<input type="password" ng-model="vm.credentials.password" class="form-control" placeholder="Password">
 				</div>
-				<button class="btn btn-success">Log-in</button>
+				<div class="form-group">
+					<input type="number" ng-model="vm.credentials.code" class="form-control" placeholder="Authorization code">
+				</div>
+				<button class="btn btn-success">Sign up</button>
 			</form>
 			<br>
 			<div class="alert alert-danger" ng-show="vm.alertMsg">{{ vm.alertMsg }}</div>
