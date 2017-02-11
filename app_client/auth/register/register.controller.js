@@ -20,9 +20,13 @@
         vm.alertMsg = false;
         auth
           .register(vm.credentials)
-          .then(function() {
+          .then(function(result) {
+    				auth.saveToken(result.data.token);
+    				console.log('sent registry data');
             $location.path('admin');
-          });
+    			}, function(err) {
+    				vm.alertMsg = 'Invalid Code';
+    			});
       } else {
         vm.alertMsg = 'Please fill up all fields';
       }

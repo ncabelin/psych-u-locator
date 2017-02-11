@@ -43,12 +43,7 @@
 		};
 
 		var register = function(user) {
-			return $http.post('/api/register', user).then(function(result) {
-				saveToken(result.data.token);
-				console.log('sent registry data');
-			}, function(err) {
-				console.log(err);
-			});
+			return $http.post('/api/register', user);
 		};
 
 		var login = function(user) {

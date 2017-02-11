@@ -14,7 +14,7 @@
     };
 
     return {
-      getProfile: getProfile
+      getAdmin: getAdmin
     };
   }
 })();

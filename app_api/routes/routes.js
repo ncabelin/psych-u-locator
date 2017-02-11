@@ -7,10 +7,10 @@ var auth = jwt({
 	userProperty: 'payload'
 });
 
-var ctrlProfile = require('../controllers/profile');
+var ctrlAdmin = require('../controllers/admin');
 var ctrlAuth = require('../controllers/auth')
 
-router.get('/profile', auth, ctrlProfile.profileRead);
+router.get('/admin', auth, ctrlAdmin.adminRead);
 
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);

@@ -20,6 +20,12 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/app_client'));
 app.use(passport.initialize());
 app.use('/api', routesApi);
+app.use(function(err, req,res, next) {
+	if (err.name === 'UnauthorizedError') {
+		res.status(401).json({ 'message': err.name + ':' 
+			+ err.name + ' ' + err.message});
+	}
+});
 
 app.get('*', function(req, res) {
 	res.sendFile('index.html');

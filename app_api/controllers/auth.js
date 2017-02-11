@@ -1,6 +1,7 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
 var User = require('../models/users');
+var code = require('../config/config');
 
 var sendJSONresponse = function(res, status, content) {
 	res.status(status).json(content);
@@ -13,13 +14,12 @@ module.exports.register = function(req, res) {
 		});
 	}
 
-	if (req.body.code !== 1200) {
-		sendJSONresponse(res, 400, {
+	if (req.body.code !== code().code_num) {
+		return sendJSONresponse(res, 400, {
 			'message': 'Invalid Code, User is not authorized to register'
 		});
 	}
 
-	console.log(req.body.code);
 	var user = new User();
 	user.name = req.body.name;
 	user.email = req.body.email;
