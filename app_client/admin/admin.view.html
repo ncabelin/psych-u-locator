@@ -1,6 +1,98 @@
 <navigation></navigation>
+<style>
+  .clickable {
+    list-style: none;
+  }
+</style>
 <div class="container" ng-controller="adminCtrl as vm">
-  <h1>Admin Page</h1>
-  <h3>{{ vm.user.name }}</h3>
-  <p>{{ vm.user.email }}</p>
+  <h1>Admin Page</h1><hr>
+  <h3>Units :</h3>
+  <button class="btn btn-primary" ng-click="vm.adding = true">Add Unit</button>
+<div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <!-- <input type="text" placeholder="Search" ng-model="vm.searchFilter"> Sort by: <a href="" ng-click="vm.sortType = 'name'" id="sortName">Name</a><br><br> -->
+
+      <form ng-show="vm.adding" ng-submit="vm.addUnit(vm.added); vm.adding = false">
+        <div class="form-group">
+          <input ng-model="vm.added.name" placeholder="Name" ng-required class="form-control">
+        </div>
+        <div class="form-group">
+          <input ng-model="vm.added.tel" placeholder="Tel" ng-required class="form-control">
+        </div>
+        <div class="form-group">
+          <input ng-model="vm.added.address" placeholder="Address" ng-required class="form-control">
+        </div>
+        <div class="form-group">
+          <input ng-model="vm.added.ins" placeholder="Insurance" ng-required class="form-control">
+        </div>
+        <div class="form-group">
+          <textarea ng-model="vm.added.info" placeholder="Info" ng-required class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="number" ng-model="vm.added.lat" placeholder="Latitude" ng-required class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="number" ng-model="vm.added.long" placeholder="Longitude" ng-required class="form-control">
+        </div>
+        <button ng-if="vm.added.address" ng-click="vm.findCoordinates()" class="btn btn-success">Get coordinates</button>
+        <button ng-click="vm.adding = false" class="btn btn-danger"><i class="fa fa-times"></i></button>
+        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+      </form><br>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-6" ng-repeat="loc in vm.locations | orderBy:vm.sortType | filter: vm.searchFilter">
+      <div class="well">
+        <ul ng-hide="editing" class="clickable">
+          <li>Name : {{ loc.name }}</li>
+          <li>Tel : {{ loc.tel }}</li>
+          <li>Address : {{ loc.address }}</li>
+          <li>Insurance : {{ loc.ins }}</li>
+          <li>Info : {{ loc.info }}</li>
+          <li>Latitude : {{ loc.lat }}</li>
+          <li>Longitude : {{ loc.long }}</li>
+        </ul>
+
+        <form ng-submit="editing = false; vm.editUnit(loc)" ng-show="editing">
+          <div class="form-group">
+            <label>Name : </label>
+            <input ng-model="loc.name" placeholder="Name" value="loc.name" ng-required class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Tel : </label>
+            <input ng-model="loc.tel" placeholder="Tel" value="loc.tel" ng-required class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Address : </label>
+            <input ng-model="loc.address" placeholder="Address" value="loc.address" ng-required class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Insurance : </label>
+            <input ng-model="loc.ins" placeholder="Insurance" value="loc.tel" ng-required class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Info : </label>
+            <textarea ng-model="loc.info" placeholder="Info" value="loc.info" ng-required class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <input ng-model="loc.lat" placeholder="Latitude" value="loc.lat" ng-required class="form-control">
+          </div>
+          <div class="form-group">
+            <input ng-model="loc.long" placeholder="Longitude" value="loc.long" ng-required class="form-control">
+          </div>
+          <button type="submit" class="btn btn-success">SAVE</button>
+          <button class="btn btn-primary" ng-click="editing = false">CANCEL</button>
+          <button ng-click="vm.deleteUnit(loc)" class="btn btn-danger">DELETE</button>
+        </form>
+          <button ng-click="editing = true" class="btn btn-info" ng-show="!editing">EDIT</button>
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

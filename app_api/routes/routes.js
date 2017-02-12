@@ -9,9 +9,13 @@ var auth = jwt({
 
 var ctrlAdmin = require('../controllers/admin');
 var ctrlAuth = require('../controllers/auth')
+var ctrlUnits = require('../controllers/units')
 
-router.get('/admin', auth, ctrlAdmin.adminRead);
-
+router.get('/admin', auth, ctrlAdmin.unitsRead);
+router.get('/units', ctrlUnits.unitsRead);
+router.post('/new/unit', auth, ctrlAdmin.newUnit);
+router.post('/edit/unit', auth, ctrlAdmin.editUnit);
+router.post('/delete/unit', auth, ctrlAdmin.deleteUnit);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
