@@ -25,7 +25,7 @@
           <input ng-model="vm.added.address" placeholder="Address" ng-required class="form-control">
         </div>
         <div class="form-group">
-          <input ng-model="vm.added.ins" placeholder="Insurance" ng-required class="form-control">
+          <input ng-model="vm.added.insurance" placeholder="Insurance" ng-required class="form-control">
         </div>
         <div class="form-group">
           <textarea ng-model="vm.added.info" placeholder="Info" ng-required class="form-control"></textarea>
@@ -51,7 +51,7 @@
           <li>Name : {{ loc.name }}</li>
           <li>Tel : {{ loc.tel }}</li>
           <li>Address : {{ loc.address }}</li>
-          <li>Insurance : {{ loc.ins }}</li>
+          <li>Insurance : {{ loc.insurance }}</li>
           <li>Info : {{ loc.info }}</li>
           <li>Latitude : {{ loc.lat }}</li>
           <li>Longitude : {{ loc.lng }}</li>
@@ -72,7 +72,7 @@
           </div>
           <div class="form-group">
             <label>Insurance : </label>
-            <input ng-model="loc.ins" placeholder="Insurance" value="loc.tel" ng-required class="form-control">
+            <input ng-model="loc.insurance" placeholder="Insurance" value="loc.insurance" ng-required class="form-control">
           </div>
           <div class="form-group">
             <label>Info : </label>

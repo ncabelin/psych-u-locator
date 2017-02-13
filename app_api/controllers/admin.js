@@ -35,7 +35,7 @@ module.exports.newUnit = function(req, res) {
 			var unit = new Unit;
 			unit.name = req.body.name;
 			unit.address = req.body.address;
-			unit.ins = req.body.ins;
+			unit.insurance = req.body.insurance;
 			unit.tel = req.body.tel;
 			unit.info = req.body.info;
 			unit.lat = req.body.lat;
@@ -70,7 +70,7 @@ module.exports.editUnit = function(req, res) {
 			} else {
 				unit.name = req.body.name;
 				unit.address = req.body.address;
-				unit.ins = req.body.ins;
+				unit.insurance = req.body.insurance;
 				unit.tel = req.body.tel;
 				unit.info = req.body.info;
 				unit.lat = req.body.lat;
