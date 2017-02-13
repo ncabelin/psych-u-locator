@@ -2,9 +2,10 @@
   <div class="container">
     <div id="navbar-main">
       <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Psych Unit Locator</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
         <li ng-hide="navvm.isLoggedIn"><a href="login">Sign in</a></li>
         <li ng-hide="navvm.isLoggedIn"><a href="register">Register</a></li>
         <li ng-show="navvm.isLoggedIn"><a href="admin">{{ navvm.currentUser.name }}</a></li>
