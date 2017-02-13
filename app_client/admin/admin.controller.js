@@ -39,12 +39,16 @@
     };
 
     vm.deleteUnit = function(obj) {
+      console.log(obj);
       meanData.deleteUnit(obj)
         .then(function(result) {
+          console.log(result.data);
           var index = vm.locations.indexOf(obj);
-          vm.locations.slice(index, 1);
+          console.log(index);
+          vm.locations.splice(index, 1);
+          console.log(vm.locations);
         }, function(err) {
-          console.log(err);
+          console.log('error :', err);
         });
     };
   }

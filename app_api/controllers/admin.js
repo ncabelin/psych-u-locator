@@ -33,6 +33,7 @@ module.exports.newUnit = function(req, res) {
 			var unit = new Unit;
 			unit.name = req.body.name;
 			unit.address = req.body.address;
+			unit.ins = req.body.ins;
 			unit.tel = req.body.tel;
 			unit.info = req.body.info;
 			unit.lat = req.body.lat;
@@ -63,20 +64,22 @@ module.exports.editUnit = function(req, res) {
 			if (err) {
 				return res.status(400).json({
 					'message': 'Unit not found'
-				})
+				});
+			} else {
+				unit.name = req.body.name;
+				unit.address = req.body.address;
+				unit.ins = req.body.ins;
+				unit.tel = req.body.tel;
+				unit.info = req.body.info;
+				unit.lat = req.body.lat;
+				unit.lng = req.body.lng;
+				unit.save(function(err, updated) {
+					if (err) { return res.status(400).json({
+						'message': 'Unable to save update'
+					}); }
+					return res.status(200).json({ 'message': 'Updated'});
+				});
 			}
-			unit.name = req.body.name;
-			unit.address = req.body.address;
-			unit.tel = req.body.tel;
-			unit.info = req.body.info;
-			unit.lat = req.body.lat;
-			unit.lng = req.body.lng;
-			unit.save(function(err, updated) {
-				if (err) { return res.status(400).json({
-					'message': 'Unable to save update'
-				}); }
-				res.status(200).json({ 'message': 'Updated'});
-			});
 		});
 	}
 };
@@ -94,7 +97,7 @@ module.exports.deleteUnit = function(req, res) {
 					'message': 'Unit not deleted'
 				})
 			}
-			res.status(200).json({'message':'Unit deleted'});
+			return res.status(200).json({'message':'Unit deleted'});
 		});
 	}
 };

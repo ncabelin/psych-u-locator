@@ -34,7 +34,7 @@
           <input type="number" ng-model="vm.added.lat" placeholder="Latitude" ng-required class="form-control">
         </div>
         <div class="form-group">
-          <input type="number" ng-model="vm.added.long" placeholder="Longitude" ng-required class="form-control">
+          <input type="number" ng-model="vm.added.lng" placeholder="Longitude" ng-required class="form-control">
         </div>
         <button ng-if="vm.added.address" ng-click="vm.findCoordinates()" class="btn btn-success">Get coordinates</button>
         <button ng-click="vm.adding = false" class="btn btn-danger"><i class="fa fa-times"></i></button>
@@ -54,7 +54,7 @@
           <li>Insurance : {{ loc.ins }}</li>
           <li>Info : {{ loc.info }}</li>
           <li>Latitude : {{ loc.lat }}</li>
-          <li>Longitude : {{ loc.long }}</li>
+          <li>Longitude : {{ loc.lng }}</li>
         </ul>
 
         <form ng-submit="editing = false; vm.editUnit(loc)" ng-show="editing">
@@ -82,11 +82,11 @@
             <input ng-model="loc.lat" placeholder="Latitude" value="loc.lat" ng-required class="form-control">
           </div>
           <div class="form-group">
-            <input ng-model="loc.long" placeholder="Longitude" value="loc.long" ng-required class="form-control">
+            <input ng-model="loc.lng" placeholder="Longitude" value="loc.lng" ng-required class="form-control">
           </div>
           <button type="submit" class="btn btn-success">SAVE</button>
-          <button class="btn btn-primary" ng-click="editing = false">CANCEL</button>
-          <button ng-click="vm.deleteUnit(loc)" class="btn btn-danger">DELETE</button>
+          <a class="btn btn-primary" ng-click="editing = false">CANCEL</a>
+          <a ng-click="vm.deleteUnit(loc);editing = false" class="btn btn-danger">DELETE</a>
         </form>
           <button ng-click="editing = true" class="btn btn-info" ng-show="!editing">EDIT</button>
           <br><br>
