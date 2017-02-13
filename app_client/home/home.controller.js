@@ -3,15 +3,12 @@
     .module('psychLocator')
     .controller('homeCtrl', homeCtrl);
 
-    homeCtrl.$inject = ['$http', 'calculate'];
-    function homeCtrl($http, calculate) {
-      console.log('Home controller is running');
-
+    homeCtrl.$inject = ['$http', 'calculate', 'geolocator'];
+    function homeCtrl($http, calculate, geolocator) {
       var vm = this;
       vm.showLocations = false;
       vm.sortType = '';
       vm.zipcode = function() {
-        console.log('Checking Zipcode');
         vm.showZipInput = true;
       };
 
@@ -22,7 +19,6 @@
             var lat = result.data.lat;
             var lng = result.data.lng;
             calculateDistance(vm.locations, lat, lng);
-            vm.sortType = distance;
           }, function(err) {
             vm.alertMsg = 'Invalid zipcode';
           });
@@ -37,39 +33,43 @@
 
       function calculateDistance(arr, lat, lng) {
         arr.forEach(function(data) {
-          data.distance = Math.floor(calculate.distance(lat, lng, data.lat, data.lng));
+          var dist = Math.floor(calculate.distance(lat, lng, data.lat, data.lng));
+          data.distance = dist ? dist : 1;
         });
       }
 
-      getLocations();
+      getLocations().then(function(result) {
+        vm.locations = result.data;
+      });
+      //
+      // $scope.$watch('locations', function(newVal, oldVal, scope) {
+      //   vm.locations = newVal;
+      // });
 
       vm.gpsErr = function() {
         vm.alertMsg = 'GPS Error: cannot find coordinates';
       };
       vm.gps = function() {
-        console.log('GPS');
-        if (!vm.locations) {
-          getLocations().then(function(result) {
-            if (navigator.geolocation) {
-              // generate error if 9 seconds has elapsed
-              // some browsers / devices do not push errors to notify absence
-              // of geolocator
-              var timed = setTimeout(function() { vm.gpsErr(); }, 9000);
-              // ask for gps coordinates
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var lng = position.coords.longitude;
-                var lat = position.coords.latitude;
-                var arr = result.data;
-                calculateDistance(arr, lat, lng);
-                vm.locations = arr;
-                clearTimeout(timed);
-                return true;
-              });
-            } else {
-              vm.gpsErr();
-            }
-          });
-        }
+        var lng, lat;
+        geolocator.locate().then(function(position) {
+          lat = position.coords.latitude;
+          lng = position.coords.longitude;
+          calculateDistance(vm.locations, lat, lng);
+        });
+        // if (navigator.geolocation) {
+        //   var timed = setTimeout(function() { vm.gpsErr(); }, 9000);
+        //   // ask for gps coordinates
+        //   navigator.geolocation.getCurrentPosition(function(position) {
+        //     lng = position.coords.longitude;
+        //     lat = position.coords.latitude;
+        //     getLocations().then(function(result) {
+        //       calculateDistance(result.data, lat, lng);
+        //       clearTimeout(timed);
+        //     });
+        //   });
+        // } else {
+        //   vm.gpsErr();
+        // }
       };
     }
 })();

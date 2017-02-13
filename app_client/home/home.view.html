@@ -22,9 +22,9 @@
 	<div class="row" ng-show="vm.locations" style="display: flex; flex-wrap: wrap;">
 		<br>
     <div class="col-md-6 col-lg-6" ng-repeat="loc in vm.locations | orderBy:'distance' | filter: vm.searchFilter">
-      <div class="well">
+      <div class="well" ng-show="loc.distance">
         <ul class="clickable">
-					<li>Distance : {{ loc.distance }} miles</li>
+					<li ng-show="loc.distance">Distance : {{ loc.distance }} mi.</li>
           <li>Name : {{ loc.name }}</li>
           <li>Tel : {{ loc.tel }}</li>
           <li>Address : {{ loc.address }}</li>

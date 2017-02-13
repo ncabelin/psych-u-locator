@@ -12,7 +12,6 @@
       dist = Math.acos(dist);
       dist = dist * 180/Math.PI;
       dist = dist * 60 * 1.1515;
-      console.log(dist);
       return dist;
     };
     return {
