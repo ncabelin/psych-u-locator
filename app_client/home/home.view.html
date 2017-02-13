@@ -16,7 +16,7 @@
 				  <input type="number" maxlength="5" ng-model="zipcodeInput" placeholder="Enter zipcode" class="form-control">
 				</div>
 			</form><br>
-			<div class="loader"></div><br>
+			<div class="loader" ng-show="vm.loader"></div><br>
 			<div class="alert alert-danger" ng-show="vm.alertMsg">{{ vm.alertMsg }}</div>
 		</div>
 	</div><br>
