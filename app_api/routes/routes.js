@@ -8,12 +8,13 @@ var auth = jwt({
 });
 
 var ctrlAdmin = require('../controllers/admin');
-var ctrlAuth = require('../controllers/auth')
-var ctrlUnits = require('../controllers/units')
+var ctrlAuth = require('../controllers/auth');
+var ctrlUnits = require('../controllers/units');
+var ctrlCoordinates = require('../controllers/coordinates');
 
 router.get('/admin', auth, ctrlAdmin.unitsRead);
 router.get('/units', ctrlUnits.unitsRead);
-router.get('/coordinates/:address', ctrlAdmin.getCoordinates);
+router.get('/coordinates/:address', ctrlCoordinates.address);
 router.post('/new/unit', auth, ctrlAdmin.newUnit);
 router.post('/edit/unit', auth, ctrlAdmin.editUnit);
 router.post('/delete/unit', auth, ctrlAdmin.deleteUnit);
