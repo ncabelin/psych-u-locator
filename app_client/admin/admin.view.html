@@ -7,10 +7,10 @@
 <div class="container" ng-controller="adminCtrl as vm">
   <h1>Admin Page</h1><hr>
   <h3>Units :</h3>
-  <button class="btn btn-primary" ng-click="vm.adding = true">Add Unit</button>
-<div>
+  <button class="btn btn-primary" ng-click="vm.adding = true;vm.alertMsg = false">ADD</button>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
+      <div class="alert alert-danger" ng-show="vm.alertMsg">{{ vm.alertMsg }}</div>
 
       <!-- <input type="text" placeholder="Search" ng-model="vm.searchFilter"> Sort by: <a href="" ng-click="vm.sortType = 'name'" id="sortName">Name</a><br><br> -->
 
@@ -36,9 +36,9 @@
         <div class="form-group">
           <input type="number" ng-model="vm.added.lng" placeholder="Longitude" ng-required class="form-control">
         </div>
-        <button ng-if="vm.added.address" ng-click="vm.findCoordinates()" class="btn btn-success">Get coordinates</button>
-        <button ng-click="vm.adding = false" class="btn btn-danger"><i class="fa fa-times"></i></button>
-        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+        <button type="submit" class="btn btn-success">SAVE</button>
+        <a ng-click="vm.adding = false" class="btn btn-danger">CANCEL</a>
+        <a ng-if="vm.added.address" ng-click="vm.findCoordinates()" class="btn btn-primary">Get coordinates</a>
       </form><br>
 
     </div>
@@ -88,11 +88,10 @@
           <a class="btn btn-primary" ng-click="editing = false">CANCEL</a>
           <a ng-click="vm.deleteUnit(loc);editing = false" class="btn btn-danger">DELETE</a>
         </form>
-          <button ng-click="editing = true" class="btn btn-info" ng-show="!editing">EDIT</button>
+          <button ng-click="editing = true;vm.alertMsg = false" class="btn btn-info" ng-show="!editing">EDIT</button>
           <br><br>
         </div>
       </div>
     </div>
-  </div>
 </div>
 </div>
