@@ -1,9 +1,11 @@
 <navigation></navigation>
-<div class="container">
+<div class="container" ng-controller="homeCtrl as vm">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<button class="btn btn-lg btn-primary">Search by Zipcode</button>
-			<button class="btn btn-lg btn-primary">Search by GPS</button>
+			<button class="btn btn-lg btn-primary" ng-click="vm.zipcode()">Search by Zipcode</button>
+			<button class="btn btn-lg btn-primary" ng-click="vm.gps()">Search by GPS</button>
 		</div>
+	</div>
+	<div class="row">
 	</div>
 </div>
