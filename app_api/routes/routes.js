@@ -13,6 +13,7 @@ var ctrlUnits = require('../controllers/units')
 
 router.get('/admin', auth, ctrlAdmin.unitsRead);
 router.get('/units', ctrlUnits.unitsRead);
+router.get('/coordinates/:address', ctrlAdmin.getCoordinates);
 router.post('/new/unit', auth, ctrlAdmin.newUnit);
 router.post('/edit/unit', auth, ctrlAdmin.editUnit);
 router.post('/delete/unit', auth, ctrlAdmin.deleteUnit);

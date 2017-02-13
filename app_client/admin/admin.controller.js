@@ -3,11 +3,12 @@
     .module('psychLocator')
     .controller('adminCtrl', adminCtrl);
 
-  adminCtrl.$inject = ['$location', 'meanData'];
-  function adminCtrl($location, meanData) {
+  adminCtrl.$inject = ['$location', 'meanData', '$http'];
+  function adminCtrl($location, meanData, $http) {
     var vm = this;
     vm.adding = false;
     vm.user = {};
+    vm.added = {};
     vm.locations = [];
     meanData.getAdmin()
     	.then(function(result) {
@@ -49,6 +50,18 @@
           vm.locations.splice(index, 1);
         }, function(err) {
           vm.alertMsg = 'Error deleting:' + err;
+          console.log('error :', err);
+        });
+    };
+
+    vm.findCoordinates = function() {
+      $http
+        .get('/api/coordinates/' + vm.added.address)
+        .then(function(result) {
+          vm.added.lng = result.data.lng;
+          vm.added.lat = result.data.lat;
+        }, function(err) {
+          vm.alertMsg = 'Error getting coordinates:' + err;
           console.log('error :', err);
         });
     };
