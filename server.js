@@ -28,7 +28,7 @@ app.use(function(err, req,res, next) {
 });
 
 app.get('*', function(req, res) {
-	res.sendFile('index.html');
+	res.sendFile(__dirname + '/app_client/index.html');
 });
 
 app.listen(port, ip, function() {
