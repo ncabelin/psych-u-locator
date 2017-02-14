@@ -25,12 +25,12 @@
     <div class="col-md-6 col-lg-6" ng-repeat="loc in vm.locations | orderBy:'distance' | filter: vm.searchFilter">
       <div class="well" ng-show="loc.distance">
         <ul class="clickable">
-					<li ng-show="loc.distance">Distance : {{ loc.distance }} mi.</li>
-          <li>Name : {{ loc.name }}</li>
-          <li>Tel : {{ loc.tel }}</li>
-          <li>Address : {{ loc.address }}</li>
-          <li ng-show="loc.insurance">Insurance : {{ loc.insurance }}</li>
-          <li ng-show="loc.info">Info : {{ loc.info }}</li>
+					<li ng-show="loc.distance"><b>Distance :</b> {{ loc.distance }} mi.</li>
+          <li><b>Name :</b> {{ loc.name }}</li>
+          <li><b>Tel :</b> {{ loc.tel }}</li>
+          <li><b>Address :</b> {{ loc.address }}</li>
+          <li ng-show="loc.insurance"><b>Insurance :</b> {{ loc.insurance }}</li>
+          <li ng-show="loc.info"><b>Info :</b> {{ loc.info }}</li>
         </ul>
       </div>
     </div>

@@ -3,3 +3,4 @@
 .DS_Store
 /app_api/models/config.js
 /app_api/models/db.js
+/app_client/images

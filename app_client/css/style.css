@@ -1,5 +1,114 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  background: url('../images/building.jpg') top left no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+h1, h2, h3 {
+  font-family: 'Oleo Script', sans-serif;
+  letter-spacing: 3px;
+}
+
+.title {
+  font-weight: bolder;
+  letter-spacing: 3px;
+  color: white !important;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #e9e9e9;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: white;
+}
+
+.navbar-default {
+  background-color: rgba(0,0,0,0.2);
+  border: 0;
+  color: white;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: rgba(0,0,0,0);
+}
+
+.navbar-default .navbar-toggle:hover {
+  border-color: rgba(0,0,0,0);
+}
+
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: rgba(0,0,0,0);
+}
+
+.navbar-default .navbar-nav>li>a {
+  text-align: center;
+}
+
+.btn-lg {
+  margin: 10px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #3a8298;
+  border: 0;
+}
+
+.btn-primary:hover {
+  background-color: #021317;
+}
+
+.btn-success {
+  background-color: #558d55;
+  border: 0;
+}
+
+.btn-success:hover {
+  background-color: #1d451d;
+}
+
+.btn-danger {
+  background-color: #a7514e;
+  border: 0;
+}
+
+.btn-danger:hover {
+  background-color: #571412;
+}
+
+.btn-info {
+  background-color: #4c90a3;
+  border: 0;
+}
+
+.btn-info:hover {
+  background-color: #254953;
+}
+
+.btn {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 30px;
+}
+
+.btn:hover {
+  transform: scale(0.9);
+  transition-duration: 0.2s;
+}
+
 .clickable {
   list-style: none;
+}
+
+.well {
+  color: black;
 }
 
 .loader {

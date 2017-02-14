@@ -39,17 +39,17 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" style="display: flex; flex-wrap: wrap;">
     <div class="col-md-6 col-lg-6" ng-repeat="loc in vm.locations | orderBy:vm.sortType | filter: vm.searchFilter">
       <div class="well">
         <ul ng-hide="editing" class="clickable">
-          <li>Name : {{ loc.name }}</li>
-          <li>Tel : {{ loc.tel }}</li>
-          <li>Address : {{ loc.address }}</li>
-          <li>Insurance : {{ loc.insurance }}</li>
-          <li>Info : {{ loc.info }}</li>
-          <li>Latitude : {{ loc.lat }}</li>
-          <li>Longitude : {{ loc.lng }}</li>
+          <li><b>Name :</b> {{ loc.name }}</li>
+          <li><b>Tel :</b> {{ loc.tel }}</li>
+          <li><b>Address :</b> {{ loc.address }}</li>
+          <li><b>Insurance :</b> {{ loc.insurance }}</li>
+          <li><b>Info :</b> {{ loc.info }}</li>
+          <li><b>Latitude :</b> {{ loc.lat }}</li>
+          <li><b>Longitude :</b> {{ loc.lng }}</li>
         </ul>
 
         <form ng-submit="editing = false; vm.editUnit(loc)" ng-show="editing">
