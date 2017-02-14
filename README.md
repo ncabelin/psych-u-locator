@@ -1,6 +1,12 @@
 # Psych Unit Locator
 
-An application that checks for the nearest psych unit in Los Angeles and show you pertinent info. This app is used by the San Fernando Valley Community Mental Health Center. It can access the current location and show the 
+An application that checks for the nearest psych unit in Los Angeles and show you pertinent info. This app is used by the San Fernando Valley Community Mental Health Center. It can access the current location and show the distance in miles to the nearest psych units without needing to access map apps. Google maps geocoding is only used for searches based on Zipcode entry to get the user's coordinates, otherwise the user's device navigator.geolocation is used along with an algorithm to calculate the distance between 2 coordinates.
+
+Users can register to update / edit the data but must have an authorization code (provided by a team lead or the developer), therefore the database model is many to one. For the search homepage no authentication is needed.
+
+The application can be accessed at https://plocator.herokuapp.com
+
+![psychunitlocator](https://cloud.githubusercontent.com/assets/15892944/22923116/06636b14-f255-11e6-9f51-7a794de5111e.jpg)
 
 ## Dependencies
 
@@ -18,7 +24,7 @@ An application that checks for the nearest psych unit in Los Angeles and show yo
 1. Main page - public
 2. Register - public
 3. Login - public
-4. Profile - private
+4. Admin - private
 5. Help - public
 
 ## Folder Structure
@@ -40,10 +46,42 @@ server.js - initialize
 
 /app_client
 	index.html
-	core.js
-	/js
+	core.js - main angular file
+	/admin
+		admin.controller.js
+		admin.view.html
+	/auth
+		/login
+			login.controller.js
+			login.view.html
+		/register
+			register.controller.js
+			register.view.html
+	/common
+		/directives
+			/navigation
+				nav.controller.js
+				nav.directive.js
+				nav.template.html
+		/services
+			auth.service.js
+			calculate.service.js
+			data.service.js
+			geolocator.service.js
 	/css
+		style.css
+	/help
+		help.view.html
+	/home
+		home.controller.js
+		home.view.html
 	/images
-
-
 ```
+
+## Contributors
+
+Neptune Michael Cabelin
+
+## License
+
+MIT
