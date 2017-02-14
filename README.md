@@ -26,16 +26,18 @@ An application that checks for the nearest psych unit in Los Angeles and show yo
 server.js - initialize
 /app_api
 	/controllers
-		auth.js - 
-		profile.js
+		auth.js - handle Auth
+		admin.js - handle Token
 	/models
 		db.js - contains url for connecting (.gitignore)
 		users.js - User mongoose model
-		config.js - contains secret phrase for token generating (.gitignore)
+		units.js - Unit mongoose model
 	/routes
-		index.js -
+		routes.js - routes
 	/config
+		config.js - Secret keywords
 		passport.js - Passport configuration
+
 /app_client
 	index.html
 	core.js
