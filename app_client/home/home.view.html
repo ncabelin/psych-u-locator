@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-12 text-center">
 			<button class="btn btn-lg btn-primary" ng-click="vm.zipcode()">Search by Zipcode</button>
-			<button class="btn btn-lg btn-primary" ng-click="vm.gps();vm.showZipInput = false">Search by GPS</button><br><br>
+			<button class="btn btn-lg btn-primary" ng-click="vm.gps();vm.showZipInput = false">Search by GPS</button>
 		</div>
 	</div>
 	<div class="row">
@@ -27,8 +27,8 @@
         <ul class="clickable">
 					<li ng-show="loc.distance"><b>Distance :</b> {{ loc.distance }} mi.</li>
           <li><b>Name :</b> {{ loc.name }}</li>
-          <li><b>Tel :</b> {{ loc.tel }}</li>
-          <li><b>Address :</b> {{ loc.address }}</li>
+          <li><b>Tel :</b> <a href="tel:{{ loc.tel }}">{{ loc.tel }}</a></li>
+          <li><b>Address :</b> <a href="https://maps.google.com/?daddr={{ loc.address }}" target="_blank">{{ loc.address }}</a></li>
           <li ng-show="loc.insurance"><b>Insurance :</b> {{ loc.insurance }}</li>
           <li ng-show="loc.info"><b>Info :</b> {{ loc.info }}</li>
         </ul>

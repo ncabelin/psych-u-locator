@@ -47,12 +47,7 @@
 		};
 
 		var login = function(user) {
-			return $http.post('/api/login', user).then(function(result) {
-				console.log('logged in');
-				saveToken(result.data.token);
-			}, function(err) {
-				console.log(err);
-			});
+			return $http.post('/api/login', user);
 		};
 
 		logout = function() {

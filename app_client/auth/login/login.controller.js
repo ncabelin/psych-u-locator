@@ -15,8 +15,12 @@
     vm.onSubmit = function() {
       auth
         .login(vm.credentials)
-        .then(function() {
+        .then(function(result) {
+  				console.log('logged');
+  				auth.saveToken(result.data.token);
           $location.path('admin');
+  			}, function(err) {
+          vm.alertMsg = err.data.message;
         });
     };
   }

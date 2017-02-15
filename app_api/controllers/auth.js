@@ -36,7 +36,7 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
 	if (!req.body.email || !req.body.password) {
-		sendJSONresponse(res, 400, {
+		res.status(400).json({
 			'message': 'All fields required'
 		});
 	}
@@ -45,6 +45,7 @@ module.exports.login = function(req, res) {
 		var token;
 
 		if (err) {
+			console.log(err);
 			res.status(404).json(err);
 			return;
 		}
@@ -55,6 +56,11 @@ module.exports.login = function(req, res) {
 			res.json({
 				'token': token
 			});
+		} else {
+			res.status(400)
+				.json({
+					'message': 'Invalid username / password'
+				});
 		}
 	})(req, res);
 };
