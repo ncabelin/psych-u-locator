@@ -11,6 +11,20 @@ h1, h2, h3 {
   letter-spacing: 3px;
 }
 
+h4 a {
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+h4 a:hover {
+  color: black;
+  text-decoration: none;
+} 
+
+.list-group-item {
+  color: black;
+}
+
 .title {
   font-weight: bolder;
   letter-spacing: 3px;
@@ -125,7 +139,7 @@ a {
 }
 
 .loader {
-    margin: 0 auto;
+    margin: 10px auto;
     border: 8px solid rgba(0,0,0,0); /* Light grey */
     border-top: 8px solid #021317; /* Blue */
     border-radius: 50%;

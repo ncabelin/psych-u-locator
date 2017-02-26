@@ -10,7 +10,7 @@ var auth = jwt({
 var ctrlAdmin = require('../controllers/admin');
 var ctrlAuth = require('../controllers/auth');
 var ctrlUnits = require('../controllers/units');
-var ctrlContacts = require('./controllers/contacts');
+var ctrlContacts = require('../controllers/contacts');
 var ctrlCoordinates = require('../controllers/coordinates');
 
 router.get('/admin', auth, ctrlAdmin.unitsRead);
@@ -20,6 +20,9 @@ router.get('/coordinates/:address', ctrlCoordinates.address);
 router.post('/new/unit', auth, ctrlAdmin.newUnit);
 router.post('/edit/unit', auth, ctrlAdmin.editUnit);
 router.post('/delete/unit', auth, ctrlAdmin.deleteUnit);
+router.post('/new/contact', auth, ctrlAdmin.newContact);
+router.post('/edit/contact', auth, ctrlAdmin.editContact);
+router.post('/delete/contact', auth, ctrlAdmin.deleteContact);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 

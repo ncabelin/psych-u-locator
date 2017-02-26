@@ -105,7 +105,7 @@ module.exports.deleteUnit = function(req, res) {
 
 module.exports.contactsRead = function(req, res) {
 	Contact.find({}, function(err, contacts) {
-		if (err) { res.status(400).json('message': 'No contacts found')}
+		if (err) { res.status(400).json({'message': 'No contacts found'})}
 		res.status(200).json(contacts);
 	});
 };
@@ -122,12 +122,12 @@ module.exports.newContact = function(req, res) {
 			contact.tel = req.body.tel;
 			contact.info = req.body.info;
 			contact.save(function(err, contact) {
-				if (err) { res.status(400).json('message': 'Error saving')}
+				if (err) { res.status(400).json({'message': 'Error saving'})}
 				res.status(200).json(contact);
 			});
-		}
-	} else {
-		res.status(400).json('message': 'Name and Telephone required');
+		} else {
+		res.status(400).json({'message': 'Name and Telephone required'});
+	}
 	}
 };
 
@@ -144,12 +144,12 @@ module.exports.editContact = function(req, res) {
 				contact.tel = req.body.tel;
 				contact.info = req.body.info;
 				contact.save(function(err, contact) {
-					if (err) { res.status(400).json('message': 'Error saving')}
-					res.status(200).json('message': 'Saved contact');
+					if (err) { res.status(400).json({'message': 'Error saving'})}
+					res.status(200).json({'message': 'Saved contact'});
 				})
 			});
 		} else {
-			res.status(400).json('message': 'Cannot leave Name and Telephone blank');
+			res.status(400).json({'message': 'Cannot leave Name and Telephone blank'});
 		}
 	}
 };
@@ -162,8 +162,8 @@ module.exports.deleteContact = function(req, res) {
 	} else {
 		if (req.body._id) {
 			Contact.remove({ _id: req.body._id}, function(err) {
-				if (err) { res.status(400).json('message': 'Error deleting')}
-				res.status(200).json('message': 'Deleted contact');
+				if (err) { res.status(400).json({'message': 'Error deleting'})}
+				res.status(200).json({'message': 'Deleted contact'});
 			})
 		}
 	}

@@ -27,12 +27,33 @@
       return $http.post('/api/delete/unit', obj, authObj);
     };
 
+    var getContacts = function(obj) {
+      return $http.get('/api/contacts', authObj);
+    };
+
+    var newContact = function(obj) {
+      return $http.post('/api/new/contact', obj, authObj);
+    };
+
+    var editContact = function(obj) {
+      console.log(obj);
+      return $http.post('/api/edit/contact', obj, authObj);
+    };
+
+    var deleteContact = function(obj) {
+      return $http.post('/api/delete/contact', obj, authObj);
+    };
+
 
     return {
       getAdmin: getAdmin,
       newUnit: newUnit,
       editUnit: editUnit,
-      deleteUnit: deleteUnit
+      deleteUnit: deleteUnit,
+      getContacts: getContacts,
+      newContact: newContact,
+      editContact: editContact,
+      deleteContact: deleteContact
     };
   }
 })();

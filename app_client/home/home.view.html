@@ -2,8 +2,9 @@
 <div class="container" ng-controller="homeCtrl as vm">
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<button class="btn btn-lg btn-primary" ng-click="vm.zipcode()">Search by Zipcode</button>
-			<button class="btn btn-lg btn-primary" ng-click="vm.gps();vm.showZipInput = false">Search by GPS</button>
+			<button class="btn btn-lg btn-primary" ng-click="vm.zipcode();vm.showContacts = false">Search by Zipcode</button>
+			<button class="btn btn-lg btn-primary" ng-click="vm.gps();vm.showZipInput = false;vm.showContacts = false">Search by GPS</button>
+			<button class="btn btn-lg btn-primary" ng-click="vm.showContacts = true;vm.showZipInput = false">Contacts</button>
 		</div>
 	</div>
 	<div class="row">
@@ -15,12 +16,12 @@
 					</span>
 				  <input type="number" maxlength="5" ng-model="zipcodeInput" placeholder="Enter zipcode" class="form-control">
 				</div>
-			</form><br>
+			</form>
 			<div class="loader" ng-show="vm.loader"></div><br>
 			<div class="alert alert-danger" ng-show="vm.alertMsg">{{ vm.alertMsg }}</div>
 		</div>
 	</div><br>
-	<div class="row" ng-show="vm.locations" style="display: flex; flex-wrap: wrap;">
+	<div class="row" ng-show="vm.showLocations" style="display: flex; flex-wrap: wrap;">
 		<br>
     <div class="col-md-6 col-lg-6" ng-repeat="loc in vm.locations | orderBy:'distance' | filter: vm.searchFilter">
       <div class="well" ng-show="loc.distance">
@@ -33,6 +34,15 @@
           <li ng-show="loc.info"><b>Info :</b> {{ loc.info }}</li>
         </ul>
       </div>
+    </div>
+  </div>
+  <div class="row" ng-show="vm.showContacts" style="display: flex; flex-wrap: wrap;">
+    <div class="col-md-6 col-lg-6" ng-repeat="c in vm.contacts">
+    	<ul class="list-group">
+        <li class="list-group-item"><b>{{ c.name }}</b></li>
+        <li class="list-group-item"><a href="tel:{{ c.tel }}">{{ c.tel }}</a></li>
+        <li class="list-group-item" ng-show="c.info">{{ c.info }}</li><br>         
+      </ul>
     </div>
   </div>
 </div>

@@ -13,25 +13,44 @@
         vm.showZipInput = true;
       };
 
-      vm.checkZipcode = function(zip) {
-        vm.loader = true;
-        // erase previous location
-        vm.locations.forEach(function(data) {
-          data.distance = 0;
-        });
-        getLocations().then(function(result) {
-          vm.locations = result.data;
-          $http.get('/api/coordinates/' + zip).then(function(result) {
+      vm.contacts = [];
+      $http.get('/api/contacts')
+        .then(function(result) {
+          vm.contacts = result.data;
+        }, function(err) {
+          vm.alertMsg = 'Error getting contacts data';
+        })
+
+      function geoLocate(zipcode) {
+        $http.get('/api/coordinates/' + zipcode).then(function(result) {
             var lat = result.data.lat;
             var lng = result.data.lng;
             calculateDistance(vm.locations, lat, lng);
             vm.loader = false;
+            vm.showLocations = true;
           }, function(err) {
             vm.alertMsg = 'Invalid zipcode';
           });
-        }, function(err) {
-          vm.alertMsg = 'Error getting locations';
-        });
+      }
+
+      vm.checkZipcode = function(zip) {
+        vm.loader = true;
+        vm.alertMsg = false;
+        if (vm.locations) {
+          // erase previous location
+          vm.locations.forEach(function(data) {
+            data.distance = 0;
+          });
+          geoLocate(zip);
+        } else {
+          // no locations yet
+          getLocations().then(function(result) {
+            vm.locations = result.data;
+            geoLocate(zip);
+          }, function(err) {
+            vm.alertMsg = 'Error getting locations';
+          });
+        }
       };
 
       function getLocations() {
@@ -54,6 +73,7 @@
       };
       vm.gps = function() {
         vm.loader = true;
+        vm.alertMsg = false;
         // erase previous distance
         vm.locations.forEach(function(data) {
           data.distance = 0;
@@ -64,6 +84,7 @@
           lng = position.coords.longitude;
           calculateDistance(vm.locations, lat, lng);
           vm.loader = false;
+          vm.showLocations = true;
         });
       };
     }

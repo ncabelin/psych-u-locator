@@ -7,18 +7,29 @@
   function adminCtrl($location, meanData, $http) {
     var vm = this;
     vm.adding = false;
+    vm.alertMsg = '';
+    vm.unitMode = true;
     vm.user = {};
     vm.added = {};
     vm.locations = [];
+    vm.contacts = [];
     meanData.getAdmin()
     	.then(function(result) {
     		// result.data
     		vm.locations = result.data;
     	}, function(err) {
     		// do error handling
-        vm.alertMsg = 'Error :' + err;
+        vm.alertMsg += 'Error :' + err;
         console.log(err);
     	});
+
+    meanData.getContacts()
+      .then(function(result) {
+        vm.contacts = result.data;
+      }, function(err) {
+        vm.alertMsg += 'Error :' + err;
+        console.log(err)
+      });
 
     vm.addUnit = function(obj) {
       vm.alertMsg = false;
@@ -65,5 +76,32 @@
           console.log('error :', err);
         });
     };
+
+    vm.newContact = function(contact) {
+      console.log(contact);
+      meanData.newContact(contact)
+        .then(function(result) {
+          vm.contacts.push(result.data);
+        })
+    }
+
+    vm.editContact = function(contact) {
+      console.log(contact);
+      meanData.editContact(contact)
+        .then(function(result) {
+
+        }, function(err) {
+
+        });
+    }
+
+    vm.deleteContact = function(contact) {
+      console.log(contact);
+      meanData.deleteContact(contact)
+        .then(function(result) {
+          var index = vm.contacts.indexOf(contact);
+          vm.contacts.splice(index, 1);
+        })
+    }
   }
 })();
