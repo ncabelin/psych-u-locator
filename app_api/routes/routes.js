@@ -13,17 +13,26 @@ var ctrlUnits = require('../controllers/units');
 var ctrlContacts = require('../controllers/contacts');
 var ctrlCoordinates = require('../controllers/coordinates');
 
-router.get('/admin', auth, ctrlAdmin.unitsRead);
-router.get('/units', ctrlUnits.unitsRead);
-router.get('/contacts', ctrlContacts.contactsRead);
-router.get('/coordinates/:address', ctrlCoordinates.address);
-router.post('/new/unit', auth, ctrlAdmin.newUnit);
-router.post('/edit/unit', auth, ctrlAdmin.editUnit);
-router.post('/delete/unit', auth, ctrlAdmin.deleteUnit);
-router.post('/new/contact', auth, ctrlAdmin.newContact);
-router.post('/edit/contact', auth, ctrlAdmin.editContact);
-router.post('/delete/contact', auth, ctrlAdmin.deleteContact);
-router.post('/register', ctrlAuth.register);
-router.post('/login', ctrlAuth.login);
+router.get('/api/admin', auth, ctrlAdmin.unitsRead);
+router.get('/api/units', ctrlUnits.unitsRead);
+router.get('/api/contacts', ctrlContacts.contactsRead);
+router.get('/api/coordinates/:address', ctrlCoordinates.address);
+router.get('/login', function(req, res) {
+	res.redirect('/');
+});
+router.get('/admin', function(req, res) {
+	res.redirect('/');
+});
+router.get('/register', function(req, res) {
+	res.redirect('/');
+});
+router.post('/api/new/unit', auth, ctrlAdmin.newUnit);
+router.post('/api/edit/unit', auth, ctrlAdmin.editUnit);
+router.post('/api/delete/unit', auth, ctrlAdmin.deleteUnit);
+router.post('/api/new/contact', auth, ctrlAdmin.newContact);
+router.post('/api/edit/contact', auth, ctrlAdmin.editContact);
+router.post('/api/delete/contact', auth, ctrlAdmin.deleteContact);
+router.post('/api/register', ctrlAuth.register);
+router.post('/api/login', ctrlAuth.login);
 
 module.exports = router;
