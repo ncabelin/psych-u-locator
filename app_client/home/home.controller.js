@@ -12,6 +12,15 @@
       vm.zipcode = function() {
         vm.showZipInput = true;
       };
+      vm.change_position = function() {
+        vm.main_btn_position = {
+          'display': 'block'
+        }
+        vm.main_cover_position = {
+          'height': '100%',
+          'transition': 'all .3s ease-out'
+        }
+      }
 
       vm.contacts = [];
       $http.get('/api/contacts')
@@ -34,6 +43,10 @@
       }
 
       vm.checkZipcode = function(zip) {
+        if (!zip) {
+          return;
+        }
+        console.log('yes');
         vm.loader = true;
         vm.alertMsg = false;
         if (vm.locations) {
@@ -72,6 +85,7 @@
         vm.alertMsg = 'GPS Error: cannot find coordinates';
       };
       vm.gps = function() {
+        vm.change_position();
         vm.loader = true;
         vm.alertMsg = false;
         // erase previous distance

@@ -1,13 +1,20 @@
 body {
   font-family: 'Noto Sans', sans-serif;
-  background: url('../images/building.jpg') fixed center center no-repeat;
   height: 100%;
   background-size: cover;
   color: white;
+  background: 
+    linear-gradient(
+      rgba(0,0,0,0.3),
+      rgba(0,0,0,0.3)
+    ),url('https://res.cloudinary.com/dd6kwd0zn/image/upload/v1504862411/psl_buyydc.jpg') top left no-repeat;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
 }
 
 h1, h2, h3 {
-  font-family: 'Oleo Script', sans-serif;
+  font-family: 'Encode Sans Condensed', sans-serif;
   letter-spacing: 3px;
 }
 
@@ -19,7 +26,20 @@ h4 a {
 h4 a:hover {
   color: black;
   text-decoration: none;
-} 
+}
+
+.cover {
+  height: 300px;
+  display: table;
+  width: 100%;
+}
+
+.cover-text {
+  text-align: center;
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
 
 .list-group-item {
   color: black;
@@ -49,9 +69,10 @@ a {
 }
 
 .navbar-default {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0);
   border: 0;
   color: white;
+  padding: 32px 64px;
 }
 
 .navbar-default .navbar-toggle {
@@ -75,21 +96,26 @@ a {
   text-align: center;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
 .btn-lg {
   margin: 10px;
 }
 
-.btn-primary {
+.btn-primary, .btn-default {
   color: #fff;
-  background-color: #3a8298;
-  border: 0;
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
 }
 
 .btn-primary:link,
 .btn-primary:hover,
 .btn-primary:active
 {
-  background-color: #021317;
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
 }
 
 .btn-success {
@@ -136,16 +162,23 @@ a {
 
 .well {
   color: black;
+  -webkit-box-shadow: 3px 7px 47px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 7px 47px -6px rgba(0,0,0,0.75);
+  box-shadow: 3px 7px 47px -6px rgba(0,0,0,0.75);
 }
 
 .loader {
-    margin: 10px auto;
-    border: 8px solid rgba(0,0,0,0); /* Light grey */
-    border-top: 8px solid #021317; /* Blue */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
+  margin: 10px auto;
+  border: 8px solid rgba(0,0,0,0); /* Light grey */
+  border-top: 8px solid #021317; /* Blue */
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+.distance, .name {
+  font-size: 1.5em;
 }
 
 @keyframes spin {
@@ -155,6 +188,19 @@ a {
 
 @media screen and (max-width:500px) {
   .title {
-    font-size: 16px;
+    font-size: 1em;
+    letter-spacing: 1px;
+  }
+  .navbar {
+    padding: 10px;
+  }
+  .clickable {
+    padding-left: 5px;
+  }
+  .name {
+    font-size: 1.2em;
+  }
+  .search-btn {
+    display: none;
   }
 }
