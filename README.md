@@ -6,7 +6,7 @@ Users can register to update / edit the data but must have an authorization code
 
 The application can be accessed at https://plocator.herokuapp.com
 
-![psychunitlocator](https://cloud.githubusercontent.com/assets/15892944/22923116/06636b14-f255-11e6-9f51-7a794de5111e.jpg)
+![psychunitlocator](https://res.cloudinary.com/dd6kwd0zn/image/upload/q_auto/v1504903904/Screenshot_2017-09-08_13.50.49_fbs6fc.jpg)
 
 ## Dependencies
 
